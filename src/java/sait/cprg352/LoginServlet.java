@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import domain.User;
 
 /**
  *
@@ -36,8 +37,12 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("user");
         String password = request.getParameter("pw");
         
-        request.setAttribute("user", user);
-        request.setAttribute("password", password);
+        User user1 = new User();
+        user1.setName(user);
+        user1.setPassword(password);
+        
+        request.setAttribute("user", user1.getName());
+        request.setAttribute("password", user1.getPassword());
         
         if(user == null || user.isEmpty() || password == null || password.isEmpty()){
             
@@ -47,7 +52,7 @@ public class LoginServlet extends HttpServlet {
             
         }
         
-        if(!userService.login(user,password)){
+        if(!userService.login(user1.getName(),user1.getPassword())){
             
             request.setAttribute("invalid", "Username or Password Invalid");
             request.setAttribute("user", user);
