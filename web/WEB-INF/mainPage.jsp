@@ -5,14 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Main Page</title>
-    </head>
-    <body>
+<c:import url="/WEB-INF/header.html" />
+
         <h1>Welcome!</h1>
         <p>Hello, ${user} <a href="LoginServlet?logout=Loged Out">Logout</a></p>
-    </body>
-</html>
+
+<c:import url="/WEB-INF/footer.html" />
